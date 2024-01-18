@@ -16,13 +16,15 @@ import { ChildComponent } from '../child/child.component';
       <p class="m-0" style="color: white">
         Parent Component Color: {{ color }}
       </p>
+      <button (click)="incrementCounter()">Increment</button>
     </div>
+
     <div class="row">
       <div class="col">
-        <app-child />
+        <app-child [counterOption]="'HIDE_ALL_COUNTER'" />
       </div>
       <div class="col">
-        <app-child />
+        <app-child [counterOption]="'HIDE_ONE_COUNTER'" />
       </div>
     </div>
   </div>`,
@@ -31,5 +33,10 @@ import { ChildComponent } from '../child/child.component';
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ParentComponent {
+  colorService = inject(ColorService);
   getColor = inject(ColorService).getRandomColor;
+
+  incrementCounter() {
+    this.colorService.incrementCounter();
+  }
 }

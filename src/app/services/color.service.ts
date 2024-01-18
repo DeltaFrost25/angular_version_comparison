@@ -1,8 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
+import { BehaviorSubject, map } from 'rxjs';
 
 @Injectable()
 export class ColorService {
   defaultColor: string = '#008000';
+  clicksDone = 0;
+  /* clicksDone = new BehaviorSubject(0);
+  clicksDone$ = this.clicksDone.pipe(map((clicks) => `${clicks} done`)); */
+  // clicksDone = signal(0);
   getRandomColor: () => string;
 
   constructor() {
@@ -18,5 +23,12 @@ export class ColorService {
       }
       return color;
     };
+  }
+
+  incrementCounter() {
+    if (this.defaultColor) this.defaultColor = '';
+    this.clicksDone++;
+    // this.clicksDone.next(this.clicksDone.value + 1);
+    // this.clicksDone.update((clicks) => ++clicks);
   }
 }

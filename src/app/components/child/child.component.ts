@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+} from '@angular/core';
 import { ColorService } from '../../services/color.service';
 import { GrandChildComponent } from '../grand-child/grand-child.component';
 
@@ -17,10 +23,12 @@ import { GrandChildComponent } from '../grand-child/grand-child.component';
     </div>
     <div class="row">
       <div class="col">
-        <app-grand-child />
+        <app-grand-child
+          [hideCounter]="omitAllCounters() || omitOneCounter()"
+        />
       </div>
       <div class="col">
-        <app-grand-child />
+        <app-grand-child [hideCounter]="omitAllCounters()" />
       </div>
     </div>
   </div>`,
@@ -29,8 +37,13 @@ import { GrandChildComponent } from '../grand-child/grand-child.component';
       display: block;
     }
   `,
-  //changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChildComponent {
+  counterOption = input.required<
+    'SHOW_ALL' | 'HIDE_ONE_COUNTER' | 'HIDE_ALL_COUNTER'
+  >();
+  omitOneCounter = computed(() => this.counterOption() === 'HIDE_ONE_COUNTER');
+  omitAllCounters = computed(() => this.counterOption() === 'HIDE_ALL_COUNTER');
   getColor = inject(ColorService).getRandomColor;
 }

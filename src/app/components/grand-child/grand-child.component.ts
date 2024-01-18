@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+} from '@angular/core';
 import { ColorService } from '../../services/color.service';
 
 @Component({
@@ -15,7 +20,14 @@ import { ColorService } from '../../services/color.service';
       <div class="d-flex justify-content-center">
         <p class="m-0" style="color: white">
           Grand Child Component Color: {{ color }}
-          <button (click)="removeDefaultColor()">Click</button>
+
+          @if (!hideCounter()) {
+          <button>Clicks {{ clicksDone }}</button>
+          <!-- <button>
+                Clicks {{ clicksDone$ | async }}
+              </button> -->
+          <!-- <button>Clicks {{ clicksDone() }}</button> -->
+          }
         </p>
       </div>
     </div>
@@ -28,14 +40,15 @@ import { ColorService } from '../../services/color.service';
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GrandChildComponent {
+  hideCounter = input(false);
   colorService = inject(ColorService);
-  getRandomColor = inject(ColorService).getRandomColor;
+  get clicksDone() {
+    return this.colorService.clicksDone;
+  }
+  // clicksDone$ = this.colorService.clicksDone$;
+  // clicksDone = this.colorService.clicksDone;
+  getRandomColor = this.colorService.getRandomColor;
   getColor = () => {
-    console.log('Detection');
     return this.getRandomColor();
   };
-
-  removeDefaultColor() {
-    this.colorService.defaultColor = '';
-  }
 }
