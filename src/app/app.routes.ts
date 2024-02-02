@@ -1,14 +1,20 @@
 import { Routes } from '@angular/router';
-import { ColorService } from './services/color.service';
 
 export const routes: Routes = [
   {
-    path: 'change-detection',
-    providers: [ColorService],
+    path: 'home',
     loadComponent: () =>
-      import('./pages/changeDetection/changeDetection.page').then(
-        (c) => c.ChangeDetectionPage
-      ),
+      import('./pages/home/home.page').then((c) => c.HomePage),
   },
-  { path: '**', pathMatch: 'full', redirectTo: 'change-detection' },
+  {
+    path: 'table',
+    loadComponent: () =>
+      import('./pages/table/table.page').then((c) => c.TablePage),
+  },
+  {
+    path: 'chart',
+    loadChildren: () =>
+      import('./pages/chart/chart.routing').then((r) => r.ChartRoutes),
+  },
+  { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
