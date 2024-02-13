@@ -3,7 +3,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { RatingModule } from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Signal, inject, signal } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { FormsModule } from '@angular/forms';
 
@@ -20,7 +20,7 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [ProductService],
   template: ` <p-table
-    [value]="products"
+    [value]="products()"
     [tableStyle]="{ 'min-width': '60rem' }"
   >
     <ng-template pTemplate="caption">
@@ -72,7 +72,7 @@ import { FormsModule } from '@angular/forms';
     </ng-template>
     <ng-template pTemplate="summary">
       <div class="flex align-items-center justify-content-between">
-        In total there are {{ products ? products.length : 0 }} products.
+        In total there are {{ products() ? products().length : 0 }} products.
       </div>
     </ng-template>
   </p-table>`,
@@ -80,13 +80,13 @@ import { FormsModule } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TablePage {
-  products!: any[];
+  products = signal<any>([]);
 
   private productService = inject(ProductService);
 
   ngOnInit() {
     this.productService.getProductsMini().then((data) => {
-      this.products = data;
+      this.products.set(data);
     });
   }
 
