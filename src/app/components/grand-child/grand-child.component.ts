@@ -23,10 +23,10 @@ import { ColorService } from '../../services/color.service';
 
           @if (!hideCounter()) {
           <!-- <button>Clicks {{ clicksDone }}</button> -->
-          <button>
+          <!-- <button>
             Clicks {{ clicksDone$ | async }}
-          </button>
-          <!-- <button>Clicks {{ clicksDone() }}</button> -->
+          </button> -->
+          <button>Clicks {{ clicksDone() }}</button>
           }
         </p>
       </div>
@@ -45,8 +45,8 @@ export class GrandChildComponent {
   /* get clicksDone() {
     return this.colorService.clicksDone;
   } */
-  clicksDone$ = this.colorService.clicksDone$;
-  // clicksDone = this.colorService.clicksDone;
+  // clicksDone$ = this.colorService.clicksDone$;
+clicksDone = this.colorService.clicksDone;
   getRandomColor = this.colorService.getRandomColor;
   getColor = () => {
     return this.getRandomColor();
