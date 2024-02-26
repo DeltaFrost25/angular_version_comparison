@@ -22,10 +22,10 @@ import { ColorService } from '../../services/color.service';
           Grand Child Component Color: {{ color }}
 
           @if (!hideCounter()) {
-          <button>Clicks {{ clicksDone }}</button>
-          <!-- <button>
-                Clicks {{ clicksDone$ | async }}
-              </button> -->
+          <!-- <button>Clicks {{ clicksDone }}</button> -->
+          <button>
+            Clicks {{ clicksDone$ | async }}
+          </button>
           <!-- <button>Clicks {{ clicksDone() }}</button> -->
           }
         </p>
@@ -42,10 +42,10 @@ import { ColorService } from '../../services/color.service';
 export class GrandChildComponent {
   hideCounter = input(false);
   colorService = inject(ColorService);
-  get clicksDone() {
+  /* get clicksDone() {
     return this.colorService.clicksDone;
-  }
-  // clicksDone$ = this.colorService.clicksDone$;
+  } */
+  clicksDone$ = this.colorService.clicksDone$;
   // clicksDone = this.colorService.clicksDone;
   getRandomColor = this.colorService.getRandomColor;
   getColor = () => {

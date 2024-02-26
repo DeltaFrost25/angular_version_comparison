@@ -4,9 +4,9 @@ import { BehaviorSubject, map } from 'rxjs';
 @Injectable()
 export class ColorService {
   defaultColor: string = '#008000';
-  clicksDone = 0;
-  /* clicksDone = new BehaviorSubject(0);
-  clicksDone$ = this.clicksDone.pipe(map((clicks) => `${clicks} done`)); */
+  //clicksDone = 0;
+  clicksDone = new BehaviorSubject(0);
+  clicksDone$ = this.clicksDone.pipe(map((clicks) => `${clicks} done`));
   // clicksDone = signal(0);
   getRandomColor: () => string;
 
@@ -27,8 +27,8 @@ export class ColorService {
 
   incrementCounter() {
     if (this.defaultColor) this.defaultColor = '';
-    this.clicksDone++;
-    // this.clicksDone.next(this.clicksDone.value + 1);
+    // this.clicksDone++;
+    this.clicksDone.next(this.clicksDone.value + 1);
     // this.clicksDone.update((clicks) => ++clicks);
   }
 }
