@@ -16,6 +16,6 @@ import { ParentComponent } from '../../components/parent/parent.component';
       display: block;
     }
   `,
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChangeDetectionPage {}

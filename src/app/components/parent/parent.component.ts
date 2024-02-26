@@ -30,7 +30,7 @@ import { ChildComponent } from '../child/child.component';
   </div>`,
   styles: `
   `,
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ParentComponent {
   colorService = inject(ColorService);

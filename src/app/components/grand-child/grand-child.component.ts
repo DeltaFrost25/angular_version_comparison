@@ -37,7 +37,7 @@ import { ColorService } from '../../services/color.service';
       display: block;
     }
   `,
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GrandChildComponent {
   hideCounter = input(false);

@@ -37,7 +37,7 @@ import { GrandChildComponent } from '../grand-child/grand-child.component';
       display: block;
     }
   `,
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChildComponent {
   counterOption = input.required<
