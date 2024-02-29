@@ -1,6 +1,6 @@
 # Ejemplo de detección de cambios en Angular (Por defecto)
 
-Este proyecto es un ejemplo de cómo Angular carga componentes Standalone y el uso de @defer para carga diferida.
+Este proyecto es un ejemplo de cómo Angular detecta los cambios en los componentes.
 
 ## Dependencias Necesarias
 
