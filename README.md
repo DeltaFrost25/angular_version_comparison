@@ -1,4 +1,4 @@
-# Ejemplo de Lazy Loading Modules en Angular
+# Ejemplo de Standalone Components y carga diferida en Angular
 
 Este proyecto es un ejemplo de cómo Angular carga sus módulos utilizando Angular 16.2.
 
@@ -18,15 +18,19 @@ Para ejecutar este proyecto:
 2. Sirve la aplicación con `ng serve`
 3. Abre tu navegador en `http://localhost:4200`
 
-## Lazy Modules
+## Standalone Components
 
 Cuando ejecutas `ng serve`, Podrás notar que "Lazy Chunk Files" incluye ahora los componentes standalone en vez de módulos, esto permite una mayor optimización a la hora de renderizar la aplicación, ya que solo se va a cargar lo que es extrictamente necesario en el navegador.
 
 ![Componentes](https://github.com/DeltaFrost25/angular_version_comparison/assets/63409989/d9b43639-729e-4c0e-8191-4de388204dcf)
 
-Cuando abres la aplicación en el navegador, puedes notar que la aplicación carga los elementos necesarios y posteriormente va cargando cada Lazy Chunk File cuando se requiera, lo cual es mucho más eficiente.
+En la siguiente imagen puedes observar como se cargan los componentes standalone y como también cuando se hace click en el boton, el mismo carga el código de la gráfica, esta funcionalidad es posible gracias a la carga diferida por medio de @defer en angular.
 
-![Chunks](https://github.com/DeltaFrost25/angular_version_comparison/assets/63409989/7ea2b9bf-9e03-4bb1-86e6-c2d17bad23d3)
+![Defer](https://github.com/DeltaFrost25/angular_version_comparison/assets/63409989/bcfe0a2b-9c6c-44b1-bba0-54f6dee7ef33)
+
+![AfterDefer](https://github.com/DeltaFrost25/angular_version_comparison/assets/63409989/e0680f5a-62ed-43dd-97bb-aac256b1b136)
+
+
 
 ## Ayuda Adicional
 
