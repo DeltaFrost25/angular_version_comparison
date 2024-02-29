@@ -1,6 +1,6 @@
 # Ejemplo de Standalone Components y carga diferida en Angular
 
-Este proyecto es un ejemplo de cómo Angular carga componentes Standalone y el uso de @defer para carga diferida.
+Este proyecto es un ejemplo de cómo Angular carga componentes Standalone y el uso de @defer para carga diferida en angular +17.
 
 ## Dependencias Necesarias
 
