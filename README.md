@@ -18,7 +18,7 @@ Para ejecutar este proyecto:
 2. Sirve la aplicación con `ng serve`
 3. Abre tu navegador en `http://localhost:4200`
 
-## Local Change Detectión
+## Local Change Detection
 
 Cuando ejecutas `ng serve`, Podrás notar que una familia de componentes, si presionas clic en el boton de "increment" en unos de los componentes "nietos" se mostrará el contador de clics y los componentes que Angular haya checkeado van a cambiar de color.
 
